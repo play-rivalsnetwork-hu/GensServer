@@ -5,20 +5,20 @@ Subject: [PATCH] Build Changes
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 59b94c7a3ca821c90adea832f97ece8a32f65034..fb75ecfc6887db9bab16af1b780e54523a823b95 100644
+index a125c0735cf4814b26ce8a96163bf65f74d23900..c7225627d7b7ee10ad6d165cc1576f3d9e36a4bd 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -8,7 +8,8 @@ plugins {
  
  dependencies {
      // Purpur start
--    implementation(project(":purpur-api")) // Pufferfish
+-    implementation(project(":purpur-api"))
 +    implementation(project(":slimeworldmanager-api"))
 +    implementation(project(":core"))
      implementation("io.papermc.paper:paper-mojangapi:${project.version}") {
          exclude("io.papermc.paper", "paper-api")
      }
-@@ -70,7 +71,8 @@ tasks.jar {
+@@ -87,7 +88,8 @@ tasks.jar {
          attributes(
              "Main-Class" to "org.bukkit.craftbukkit.Main",
              "Implementation-Title" to "CraftBukkit",
@@ -28,7 +28,7 @@ index 59b94c7a3ca821c90adea832f97ece8a32f65034..fb75ecfc6887db9bab16af1b780e5452
              "Implementation-Vendor" to date, // Paper
              "Specification-Title" to "Bukkit",
              "Specification-Version" to project.version,
-@@ -142,7 +144,7 @@ fun TaskContainer.registerRunTask(
+@@ -159,7 +161,7 @@ fun TaskContainer.registerRunTask(
      name: String,
      block: JavaExec.() -> Unit
  ): TaskProvider<JavaExec> = register<JavaExec>(name) {
@@ -1979,10 +1979,10 @@ index ce449b7b6f615f2c8240e4207f06d4e54ae0083e..a94e41a2315c17fb7c387efd9ee5db7f
      public FullChunkStatus status;
  
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 77b84d49ab7c9d64dc44df5310dca789e4f2cb63..eb7ae4d0844776ddc3097d1c318a7ac00a147757 100644
+index 65e0bc8b102e5ad16d2ac919b8c6d1f5497b321b..f188df054a13f16985e892090175a1702b3b16ac 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -274,7 +274,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -272,7 +272,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      private final PackRepository packRepository;
      private final ServerScoreboard scoreboard;
      @Nullable
@@ -2187,10 +2187,10 @@ index 77b84d49ab7c9d64dc44df5310dca789e4f2cb63..eb7ae4d0844776ddc3097d1c318a7ac0
              net.minecraft.world.scores.PlayerTeam collideTeam = scoreboard.addPlayerTeam(this.getPlayerList().collideRuleTeamName);
              collideTeam.setSeeFriendlyInvisibles(false); // Because we want to mimic them not being on a team at all
 diff --git a/src/main/java/net/minecraft/server/level/ServerChunkCache.java b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-index f75f7b39aa4ed5c18cd2d761a1337df5b1771a23..d539ec130a3eb927416b01131a5f56376547ee9d 100644
+index b02335301fa76174dcb3b9f212c1a02570cfd4c1..2e5be125152c3d87a25a3024629099e5ca32be51 100644
 --- a/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 +++ b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-@@ -168,7 +168,11 @@ public class ServerChunkCache extends ChunkSource {
+@@ -171,7 +171,11 @@ public class ServerChunkCache extends ChunkSource {
      public final io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<LevelChunk> entityTickingChunks = new io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<>(4096, 0.75f, 4096, 0.15, true);
      // Paper end
  
@@ -2204,7 +2204,7 @@ index f75f7b39aa4ed5c18cd2d761a1337df5b1771a23..d539ec130a3eb927416b01131a5f5637
          this.mainThreadProcessor = new ServerChunkCache.MainThreadExecutor(world);
          this.mainThread = Thread.currentThread();
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 653e469c726e6e44b93452e0cac2448e3816b3c8..2bec2bfcc23af5bafcd4cb8f933852917b376d68 100644
+index 221d1d0e1b4b46de6ebca5faac09bbda875fae17..3805daca147f09c2420fdb54d536e9b7c679aaf7 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -646,6 +646,14 @@ public class ServerLevel extends Level implements WorldGenLevel {
@@ -2303,10 +2303,10 @@ index 9c6a2884c34a9f6e775103da42480cd6b8c693b3..3ef732bd50239c547eddfd0dcbc053a7
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 06ded97822e9a51bf6aea377e59013a0717664e3..71809d7ee995f1a821608abb700bccb6618e5f22 100644
+index 7a388f0e57bc05634be64b16fa66acdb416ac849..da9d9753463ee8472ada21056a21faace11494da 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -262,7 +262,7 @@ import javax.annotation.Nullable; // Paper
+@@ -261,7 +261,7 @@ import javax.annotation.Nullable; // Paper
  import javax.annotation.Nonnull; // Paper
  
  public final class CraftServer implements Server {
