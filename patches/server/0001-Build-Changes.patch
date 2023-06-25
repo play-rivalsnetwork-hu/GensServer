@@ -5,7 +5,7 @@ Subject: [PATCH] Build Changes
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index a125c0735cf4814b26ce8a96163bf65f74d23900..c7225627d7b7ee10ad6d165cc1576f3d9e36a4bd 100644
+index 2c5ef872dd62a1ee427d6fd0e70be10a0afcdedd..acdbd7946274d66912af7dfa3d2e72f7fcae02c1 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -8,7 +8,8 @@ plugins {
@@ -18,6 +18,15 @@ index a125c0735cf4814b26ce8a96163bf65f74d23900..c7225627d7b7ee10ad6d165cc1576f3d
      implementation("io.papermc.paper:paper-mojangapi:${project.version}") {
          exclude("io.papermc.paper", "paper-api")
      }
+@@ -54,7 +55,7 @@ dependencies {
+ 
+     // Pufferfish start
+     implementation("org.yaml:snakeyaml:1.32")
+-    implementation ("me.carleslc.Simple-YAML:Simple-Yaml:1.8.4") {
++    implementation ("com.github.carleslc.Simple-YAML:Simple-Yaml:1.8.4") {
+         exclude(group="org.yaml", module="snakeyaml")
+     }
+     // Pufferfish end
 @@ -87,7 +88,8 @@ tasks.jar {
          attributes(
              "Main-Class" to "org.bukkit.craftbukkit.Main",
@@ -1979,7 +1988,7 @@ index ce449b7b6f615f2c8240e4207f06d4e54ae0083e..a94e41a2315c17fb7c387efd9ee5db7f
      public FullChunkStatus status;
  
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 65e0bc8b102e5ad16d2ac919b8c6d1f5497b321b..f188df054a13f16985e892090175a1702b3b16ac 100644
+index 1143e2e76ef896ecf54fa0296c66815b6f856740..7044031c5b30d8f39d8a3b8d181bfd787d3c2dc2 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -272,7 +272,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -2303,7 +2312,7 @@ index 9c6a2884c34a9f6e775103da42480cd6b8c693b3..3ef732bd50239c547eddfd0dcbc053a7
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 7a388f0e57bc05634be64b16fa66acdb416ac849..da9d9753463ee8472ada21056a21faace11494da 100644
+index da88daa4f5458c9e98cd1f4925745ed7c9242c6a..92da77b5e1331fe8d0d5610bb4ef6be3c7e37589 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -261,7 +261,7 @@ import javax.annotation.Nullable; // Paper
