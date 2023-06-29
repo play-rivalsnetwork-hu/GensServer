@@ -5,7 +5,7 @@ Subject: [PATCH] Build Changes
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 2c5ef872dd62a1ee427d6fd0e70be10a0afcdedd..acdbd7946274d66912af7dfa3d2e72f7fcae02c1 100644
+index 4b0eee46d899cb641988ef7a3b5b61e938b76c71..acdbd7946274d66912af7dfa3d2e72f7fcae02c1 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -8,7 +8,8 @@ plugins {
@@ -18,15 +18,6 @@ index 2c5ef872dd62a1ee427d6fd0e70be10a0afcdedd..acdbd7946274d66912af7dfa3d2e72f7
      implementation("io.papermc.paper:paper-mojangapi:${project.version}") {
          exclude("io.papermc.paper", "paper-api")
      }
-@@ -54,7 +55,7 @@ dependencies {
- 
-     // Pufferfish start
-     implementation("org.yaml:snakeyaml:1.32")
--    implementation ("me.carleslc.Simple-YAML:Simple-Yaml:1.8.4") {
-+    implementation ("com.github.carleslc.Simple-YAML:Simple-Yaml:1.8.4") {
-         exclude(group="org.yaml", module="snakeyaml")
-     }
-     // Pufferfish end
 @@ -87,7 +88,8 @@ tasks.jar {
          attributes(
              "Main-Class" to "org.bukkit.craftbukkit.Main",
