@@ -1,15 +1,15 @@
-# Advanced Slime Paper (ASWM) [![Build Status](https://ci.infernalsuite.com/app/rest/builds/buildType:(id:AdvancedSlimePaper_Build)/statusIcon)](https://ci.infernalsuite.com/viewType.html?buildTypeId=AdvancedSlimePaper_Build&guest=1)
+# Advanced Slime Purpur (ASWM) [![Build Status](https://ci.infernalsuite.com/app/rest/builds/buildType:(id:AdvancedSlimePaper_Build)/statusIcon)](https://ci.infernalsuite.com/viewType.html?buildTypeId=AdvancedSlimePaper_Build&guest=1)
 
 [<img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0b5061df29d55a92d945_full_logo_blurple_RGB.svg" alt="" height="55" />](https://discord.gg/YevvsMa)
 
 
-Advanced Slime Paper is a fork of Paper implementing the Slime Region Format developed by Hypixel. Originally a plugin, this project has been converted to a
+Advanced Slime Purpur is a fork of Purpur implementing the Slime Region Format developed by Hypixel. Originally a plugin, this project has been converted to a
 fork to maximize our ability to provide fixes and performance improvements.
 Its goal is to provide server administrators with an easy-to-use tool to load worlds faster and save space.
 
 ## Releases
 
-ASWM releases can be found [here](https://github.com/InfernalSuite/AdvancedSlimePaper/releases). More recent
+ASWM releases can be found [here](https://github.com/InfernalSuite/AdvancedSlimePurpur/releases). More recent
 releases can be found in the [Discord](https://discord.gg/YevvsMa) under the #new-builds channel.
 
 ## Using SWM in your plugin
