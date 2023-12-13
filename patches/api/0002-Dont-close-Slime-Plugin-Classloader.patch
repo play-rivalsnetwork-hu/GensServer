@@ -5,13 +5,13 @@ Subject: [PATCH] Dont close Slime Plugin Classloader
 
 
 diff --git a/src/main/java/org/bukkit/plugin/java/PluginClassLoader.java b/src/main/java/org/bukkit/plugin/java/PluginClassLoader.java
-index f9b57b872780aa6b9b959494874b57c7a8ff0c53..489a9dd31dd68325213110e5b2f144f7159b8d63 100644
+index 90953bfc81168068a281be4d2d3942d5e7dd69ff..24b6fb94c88d4d544eed25c4199d59f003f2e5b8 100644
 --- a/src/main/java/org/bukkit/plugin/java/PluginClassLoader.java
 +++ b/src/main/java/org/bukkit/plugin/java/PluginClassLoader.java
-@@ -265,7 +265,9 @@ public final class PluginClassLoader extends URLClassLoader implements io.paperm
-             // Paper end
+@@ -270,7 +270,9 @@ public final class PluginClassLoader extends URLClassLoader implements io.paperm
              super.close();
          } finally {
+             this.closed = true; // Pufferfish
 +            if (this.plugin == null || !this.plugin.getName().equals("SlimeWorldManager")) { // ASWM - Don't close
              jar.close();
 +            } // ASWM - Don't close
