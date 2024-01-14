@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AverageGithub <AverageGithub@github.com>
+Date: Tue, 27 Jun 2023 21:56:17 +0200
+Subject: [PATCH] Remove damage indicator particles
+
+
+diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
+index 724329ded5d72eb230db392972d30e7ba4e69ceb..2f00d67d698b96044a2186543da8b7f69505e6bc 100644
+--- a/src/main/java/net/minecraft/world/entity/player/Player.java
++++ b/src/main/java/net/minecraft/world/entity/player/Player.java
+@@ -1479,7 +1479,7 @@ public abstract class Player extends LivingEntity {
+                             if (this.level() instanceof ServerLevel && f5 > 2.0F) {
+                                 int k = (int) ((double) f5 * 0.5D);
+ 
+-                                ((ServerLevel) this.level()).sendParticles(ParticleTypes.DAMAGE_INDICATOR, target.getX(), target.getY(0.5D), target.getZ(), k, 0.1D, 0.0D, 0.1D, 0.2D);
++                               // ((ServerLevel) this.level()).sendParticles(ParticleTypes.DAMAGE_INDICATOR, target.getX(), target.getY(0.5D), target.getZ(), k, 0.1D, 0.0D, 0.1D, 0.2D);
+                             }
+                         }
+ 

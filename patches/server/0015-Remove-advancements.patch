@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AverageGithub <adorjantoto09@gmail.com>
+Date: Fri, 3 Nov 2023 15:08:31 +0100
+Subject: [PATCH] Remove advancements
+
+
+diff --git a/src/main/java/net/minecraft/advancements/AdvancementTree.java b/src/main/java/net/minecraft/advancements/AdvancementTree.java
+index 5cf3732d2197b381ae9256d8bed03a755d8539f4..ffc5e79d23f6272a0e6ea63b583fa7107e7d8117 100644
+--- a/src/main/java/net/minecraft/advancements/AdvancementTree.java
++++ b/src/main/java/net/minecraft/advancements/AdvancementTree.java
+@@ -68,6 +68,7 @@ public class AdvancementTree {
+     }
+ 
+     public void addAll(Collection<AdvancementHolder> advancements) {
++        /*
+         ArrayList<AdvancementHolder> arraylist = new ArrayList(advancements); // CraftBukkit - decompile error
+ 
+         while (!arraylist.isEmpty()) {
+@@ -78,9 +79,11 @@ public class AdvancementTree {
+         }
+ 
+         // AdvancementTree.LOGGER.info("Loaded {} advancements", this.nodes.size()); // CraftBukkit - moved to AdvancementDataWorld#reload // Paper - you say it was moved... but it wasn't :) it should be moved however, since this is called when the API creates an advancement
++        */
+     }
+ 
+     private boolean tryInsert(AdvancementHolder advancement) {
++        /*
+         Optional<ResourceLocation> optional = advancement.value().parent();
+         Map map = this.nodes;
+ 
+@@ -111,6 +114,8 @@ public class AdvancementTree {
+ 
+             return true;
+         }
++        */
++        return false;
+     }
+ 
+     public void clear() {

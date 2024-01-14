@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AverageGithub <adorjantoto09@gmail.com>
+Date: Mon, 30 Oct 2023 20:08:39 +0100
+Subject: [PATCH] Yes
+
+
+diff --git a/build.gradle.kts b/build.gradle.kts
+index 1cb8ba69a41f6eb5ffa3a0e06af0e322824103bb..78626b57c464070ec61db9f3254bb3828093e388 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -231,10 +231,4 @@ val runtimeClasspathForRunDev = sourceSets.main.flatMap { src ->
+     src.runtimeClasspath.elements.map { elements ->
+         elements.filterNot { file -> file.asFile.endsWith("minecraft.jar") }
+     }
+-}
+-tasks.registerRunTask("runDev") {
+-    description = "Spin up a non-relocated Mojang-mapped test server"
+-    classpath(tasks.filterProjectDir.flatMap { it.outputJar })
+-    classpath(runtimeClasspathForRunDev)
+-    jvmArgs("-DPaper.isRunDev=true")
+-}
++}
+\ No newline at end of file

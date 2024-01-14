@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AverageGithub <adorjantoto09@gmail.com>
+Date: Mon, 30 Oct 2023 19:52:43 +0100
+Subject: [PATCH] Change equip event
+
+
+diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/main/java/net/minecraft/world/entity/LivingEntity.java
+index 18b12edbbdc2d974e2bc48c5d33848dc3bc9f976..ca6ace55cf3fc76f634df3a84566bf091e1cb4d4 100644
+--- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
++++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
+@@ -3235,7 +3235,7 @@ public abstract class LivingEntity extends Entity implements Attackable {
+ 
+             if (this.equipmentHasChanged(itemstack, itemstack1)) {
+                 // Paper start - PlayerArmorChangeEvent
+-                if (this instanceof ServerPlayer && enumitemslot.getType() == EquipmentSlot.Type.ARMOR) {
++                if (this instanceof ServerPlayer) {
+                     final org.bukkit.inventory.ItemStack oldItem = CraftItemStack.asBukkitCopy(itemstack);
+                     final org.bukkit.inventory.ItemStack newItem = CraftItemStack.asBukkitCopy(itemstack1);
+                     new PlayerArmorChangeEvent((Player) this.getBukkitEntity(), PlayerArmorChangeEvent.SlotType.valueOf(enumitemslot.name()), oldItem, newItem).callEvent();

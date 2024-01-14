@@ -1,0 +1,78 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AverageGithub <AverageGithub@github.com>
+Date: Fri, 23 Jun 2023 11:07:53 +0200
+Subject: [PATCH] Disable hunger
+
+
+diff --git a/src/main/java/net/minecraft/world/food/FoodData.java b/src/main/java/net/minecraft/world/food/FoodData.java
+index e8079d126e6c0cf0b15c01afb6498922ee05964c..03e6bc9e9079b86eaa5c571eaaaa57da43312084 100644
+--- a/src/main/java/net/minecraft/world/food/FoodData.java
++++ b/src/main/java/net/minecraft/world/food/FoodData.java
+@@ -40,6 +40,8 @@ public class FoodData {
+     }
+ 
+     public void eat(Item item, ItemStack stack) {
++        // SkyBlock Start - disable regeneration & food loss/gain
++        /* 
+         if (item.isEdible()) {
+             FoodProperties foodinfo = item.getFoodProperties();
+             // CraftBukkit start
+@@ -54,12 +56,14 @@ public class FoodData {
+             ((ServerPlayer) this.entityhuman).getBukkitEntity().sendHealthUpdate();
+             // CraftBukkit end
+         }
+-
++        */
++        // SkyBlock end
+     }
+ 
+     public void tick(Player player) {
++        // SkyBlock Start - disable regeneration & food loss/gain
+         Difficulty enumdifficulty = player.level().getDifficulty();
+-
++        /*
+         this.lastFoodLevel = this.foodLevel;
+         if (this.exhaustionLevel > 4.0F) {
+             this.exhaustionLevel -= 4.0F;
+@@ -77,6 +81,7 @@ public class FoodData {
+                 // CraftBukkit end
+             }
+         }
++        */
+ 
+         boolean flag = player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION);
+ 
+@@ -87,7 +92,7 @@ public class FoodData {
+ 
+                 player.heal(f / 6.0F, org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason.SATIATED, true); // CraftBukkit - added RegainReason // Paper - This is fast regen
+                 // this.addExhaustion(f); CraftBukkit - EntityExhaustionEvent
+-                player.causeFoodExhaustion(f, org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason.REGEN); // CraftBukkit - EntityExhaustionEvent
++                //player.causeFoodExhaustion(f, org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason.REGEN); // CraftBukkit - EntityExhaustionEvent
+                 this.tickTimer = 0;
+             }
+         } else if (flag && this.foodLevel >= 18 && player.isHurt()) {
+@@ -95,10 +100,10 @@ public class FoodData {
+             if (this.tickTimer >= this.unsaturatedRegenRate) { // CraftBukkit - add regen rate manipulation
+                 player.heal(1.0F, org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason.SATIATED); // CraftBukkit - added RegainReason
+                 // this.a(6.0F); CraftBukkit - EntityExhaustionEvent
+-                player.causeFoodExhaustion(player.level().spigotConfig.regenExhaustion, org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason.REGEN); // CraftBukkit - EntityExhaustionEvent // Spigot - Change to use configurable value
++                //player.causeFoodExhaustion(player.level().spigotConfig.regenExhaustion, org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason.REGEN); // CraftBukkit - EntityExhaustionEvent // Spigot - Change to use configurable value
+                 this.tickTimer = 0;
+             }
+-        } else if (this.foodLevel <= 0) {
++        } /*else if (this.foodLevel <= 0) {
+             ++this.tickTimer;
+             if (this.tickTimer >= this.starvationRate) { // CraftBukkit - add regen rate manipulation
+                 if (player.getHealth() > 10.0F || enumdifficulty == Difficulty.HARD || player.getHealth() > 1.0F && enumdifficulty == Difficulty.NORMAL) {
+@@ -107,10 +112,9 @@ public class FoodData {
+ 
+                 this.tickTimer = 0;
+             }
+-        } else {
++        }*/ else {
+             this.tickTimer = 0;
+         }
+-
+     }
+ 
+     public void readAdditionalSaveData(CompoundTag nbt) {
